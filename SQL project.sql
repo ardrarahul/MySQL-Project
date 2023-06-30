@@ -75,24 +75,34 @@ INSERT INTO BOOKS VALUES(749123856, "Gone Girl", 'Mystery', 6.99, 'No', 'Gillian
 SELECT * FROM BOOKS;
 
 # Write the queries for the following: 
+  
 # 1. Retrieve the book title, category, and rental price of all available books. 
 SELECT Book_Title, Category, Rental_Price FROM BOOKS WHERE Status = 'Yes';
+
 # 2. List the employee names and their respective salaries in descending order of salary. 
 SELECT Emp_Name,Salary FROM EMPLOYEE ORDER BY Salary desc;
+
 # 3. Retrieve the book titles and the corresponding customers who have issued those books. 
 SELECT Issued_Book_Name AS Book_Title,Customer_Name FROM ISSUE_STATUS INNER JOIN CUSTOMER ON ISSUE_STATUS.Issued_Cust=CUSTOMER.Customer_Id;
+
 # 4. Display the total count of books in each category. 
 SELECT Category,COUNT(*) AS TOTAL_COUNT FROM BOOKS GROUP BY Category;
+
 # 5. Retrieve the employee names and their positions for the employees whose salaries are above Rs.50,000. 
 SELECT Emp_Name, Position FROM EMPLOYEE WHERE Salary>50000;
+
 # 6. List the customer names who registered before 2022-01-01 and have not issued any books yet. 
 SELECT Customer_Name FROM CUSTOMER WHERE Reg_Date < '2022-01-01' AND Customer_Id NOT IN (SELECT Issued_Cust FROM ISSUE_STATUS);
+
 # 7. Display the branch numbers and the total count of employees in each branch. 
 SELECT Branch_No,COUNT(*) FROM BRANCH GROUP BY Branch_No; 
+
 # 8. Display the names of customers who have issued books in the month of June 2023.?? 
 SELECT Issued_Cust FROM ISSUE_STATUS WHERE Issue_Date BETWEEN '2023-06-01' AND '2023-06-30';
+
 # 9. Retrieve book_title from book table containing history. 
 SELECT Book_Title FROM BOOKS WHERE Category = 'History';
+
 # 10.Retrieve the branch numbers along with the count of employees for branches having more than 5 employees.
 SELECT Branch_No,COUNT(*) AS Employee_Count FROM BRANCH GROUP BY Branch_No HAVING COUNT(*) > 5;
 
